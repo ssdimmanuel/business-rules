@@ -2,9 +2,9 @@ package com.expr.brule.newtests;
 
 import java.io.IOException;
 
-import com.expr.brule.edits.RuleBalancer;
+import com.expr.brule.stats.ExtractExpression;
 
-public class BalanceTest {
+public class ExtractTest {
 
 	public static void main(String[] args) throws IOException {
 		String rule = "( ( ( AMOUNT > 200000.00) AND ( IND1 = Y) ) or ( ind1 = Y ) )";
@@ -12,10 +12,10 @@ public class BalanceTest {
 		rule=" (AMOUNT > 200000.00 AND  IND1 = Y) or ( ind2 = I";
 		
 		//rule = "( a = b & c = 10.0) & b";
-		RuleBalancer bal = new RuleBalancer(rule);
+		ExtractExpression bal = new ExtractExpression(rule);
 		bal.parseRule();
 		
-		System.out.println("Before: "+rule);
+		System.out.println("Before: "+bal.getExpressions());
 		System.out.println("After:  "+bal.getLatestRule().trim());
 	}
 

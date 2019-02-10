@@ -41,8 +41,8 @@ public class RuleBalancer extends ParseWrapper {
 
 	@Override
 	public void enterLogicalExpression(LogicalExpressionContext ctx) {
-		System.out.println("" + ctx.getParent().getClass());
-		System.out.println(ctx.getText());
+		//System.out.println("" + ctx.getParent().getClass());
+		//System.out.println(ctx.getText());
 		if (ctx.getParent() instanceof EnclosedExpressionContext) {
 			return;
 		}

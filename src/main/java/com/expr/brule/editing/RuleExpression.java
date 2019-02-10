@@ -3,8 +3,8 @@ package com.expr.brule.editing;
 public class RuleExpression {
 
 	public RuleExpression() {
+		
 	}
-	
 	
 	public RuleExpression(String businessVariable, String comparedValue, String operator) {
 		this.businessVariable = businessVariable;
@@ -12,10 +12,12 @@ public class RuleExpression {
 		this.operator = operator;
 	}
 
-
 	private String businessVariable;
 	private String comparedValue;
 	private String operator;
+	
+	private int parseSequence;
+	
 	public String getBusinessVariable() {
 		return businessVariable;
 	}
@@ -34,7 +36,6 @@ public class RuleExpression {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -80,6 +81,16 @@ public class RuleExpression {
 		} else if (!operator.equals(other.operator))
 			return false;
 		return true;
+	}
+
+
+	public int getParseSequence() {
+		return parseSequence;
+	}
+
+
+	public void setParseSequence(int parseSequence) {
+		this.parseSequence = parseSequence;
 	}
 
 	

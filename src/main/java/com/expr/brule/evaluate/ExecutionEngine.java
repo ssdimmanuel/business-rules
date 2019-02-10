@@ -19,6 +19,7 @@ import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.ParseContext;
 import com.expr.brule.core.BusinessRuleParser.StringExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
+import com.expr.brule.editing.RuleExpression;
 
 /**
  * @author ssdImmanuel
@@ -29,12 +30,17 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	public ExecutionEngine(String rule, HashMap<String, Object> values) {
 		this.rule = rule;
 		this.values = values;
+		this.debug = false;
+		this.ruleResult = new RuleResult();
 	}
 
 	private String rule;
 	private HashMap values;
 
 	private Boolean result;
+	private boolean debug=false;
+	
+	private RuleResult ruleResult;
 
 	/**
 	 * Parses the rule String passed and calls the top level visit method
@@ -43,6 +49,7 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		BusinessRuleLexer lexer = new BusinessRuleLexer(CharStreams.fromString(rule));
 		BusinessRuleParser parser = new BusinessRuleParser(new CommonTokenStream(lexer));
 		this.result = (Boolean) this.visit(parser.parse());
+		this.ruleResult.setOutcome(result);
 		System.out.println("Final outcome : " + result);
 	}
 
@@ -50,22 +57,18 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	public Object visitParse(ParseContext ctx) {
 		System.out.println("visit parse: " + ctx.getText());
 		boolean res = false;
-
 		res = (boolean) super.visit(ctx.expr());
-
-		System.out.println("after parse");
 		return res;
 	}
 	
 	@Override
 	public Object visitEnclosedExpression(EnclosedExpressionContext ctx) {
-		//System.out.println("ee: "+ctx.expr().getClass());
 		return super.visit(ctx.expr());
 	}
 
 	@Override
 	public Object visitStringExpression(StringExpressionContext ctx) {
-		System.out.println("inside String exp");
+		System.out.println("*** inside String exp");
 		String lhsvalue = ctx.lhs.getText();
 		String rhsvalue = ctx.rhs.getText();
 		Object lhsRuntimeValue;
@@ -177,12 +180,16 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 
 	@Override
 	public Object visitVariableExpression(VariableExpressionContext ctx) {
+		ExecutionDetails detail = new ExecutionDetails();
 		System.out.println("inside String exp");
 		String lhsvalue = ctx.lhs.getText();
 		String rhsvalue = ctx.rhs.getText();
 		Object lhsRuntimeValue;
 		Object rhsRuntimeValue;
 		//Object newrhsValue = rhsvalue.replaceAll("\"", "");
+		
+		RuleExpression exp = new RuleExpression(lhsvalue,rhsvalue,ctx.compop().getText());
+		detail.setExpression(exp);
 
 		lhsRuntimeValue = this.values.get(lhsvalue);
 		if (lhsRuntimeValue == null) {
@@ -198,6 +205,8 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		System.out.println("lhs: " + lhsvalue);
 		System.out.println("sbs: " + values.get(lhsvalue));
 		System.out.println("rhs: " + ctx.rhs.getText());
+		
+		boolean tempresult = false;
 
 		if (ctx.compop().EQUAL() != null) {
 			System.out.println("Outcome of expr " + ctx.getText() + " : " + lhsRuntimeValue.equals(rhsvalue));
@@ -207,14 +216,17 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 			} else if (lhsRuntimeValue instanceof Integer) {
 
 			}
-			return lhsRuntimeValue.equals(rhsRuntimeValue);
+			tempresult = lhsRuntimeValue.equals(rhsRuntimeValue);
+		}else if (ctx.compop().GT() != null) {
+
+		}else {
+			tempresult = lhsRuntimeValue.equals(rhsvalue);
 		}
+		detail.setOutcome(tempresult);
+		
+		this.ruleResult.addExecutionInstance(detail);
 
-		if (ctx.compop().GT() != null) {
-
-		}
-
-		return lhsRuntimeValue.equals(rhsvalue);
+		return tempresult;
 	}
 
 	@Override
@@ -225,6 +237,18 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	@Override
 	public Object visitCompop(CompopContext ctx) {
 		return super.visitCompop(ctx);
+	}
+
+	public Boolean getResult() {
+		return result;
+	}
+
+	public RuleResult getRuleResult() {
+		return ruleResult;
+	}
+
+	public void setRuleResult(RuleResult ruleResult) {
+		this.ruleResult = ruleResult;
 	}
 
 }
