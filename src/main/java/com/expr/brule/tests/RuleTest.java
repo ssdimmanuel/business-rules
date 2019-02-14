@@ -9,8 +9,8 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import com.expr.brule.core.BusinessRuleLexer;
 import com.expr.brule.core.BusinessRuleParser;
-import com.expr.brule.core.RuleExpCounter;
 import com.expr.brule.core.BusinessRuleParser.ParseContext;
+import com.expr.brule.stats.RuleExpCounter;
 
 public class RuleTest {
 

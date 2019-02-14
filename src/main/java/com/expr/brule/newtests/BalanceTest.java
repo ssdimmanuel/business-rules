@@ -11,6 +11,8 @@ public class BalanceTest {
 		//rule= " ( AMOUNT = 1010.00 )";
 		rule=" (AMOUNT > 200000.00 AND  IND1 = Y) or ( ind2 = I";
 		
+		rule = "ind1 = 1 )";
+		
 		//rule = "( a = b & c = 10.0) & b";
 		RuleBalancer bal = new RuleBalancer(rule);
 		bal.parseRule();
