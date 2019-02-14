@@ -74,6 +74,10 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		Object lhsRuntimeValue;
 		Object newrhsValue = rhsvalue.replaceAll("\"", "");
 
+		ExecutionDetails detail = new ExecutionDetails();
+		RuleExpression exp = new RuleExpression(lhsvalue,rhsvalue,ctx.compop().getText());
+		detail.setExpression(exp);
+		
 		lhsRuntimeValue = this.values.get(lhsvalue);
 		if (lhsRuntimeValue == null) {
 			lhsRuntimeValue = lhsvalue;
@@ -83,6 +87,7 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		System.out.println("sbs: " + values.get(lhsvalue));
 		System.out.println("rhs: " + ctx.rhs.getText());
 
+		boolean tempresult=false;
 		if (ctx.compop().EQUAL() != null) {
 			System.out.println("Outcome of expr " + ctx.getText() + " : " + lhsRuntimeValue.equals(rhsvalue));
 
@@ -91,14 +96,17 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 			} else if (lhsRuntimeValue instanceof Integer) {
 
 			}
-			return lhsRuntimeValue.equals(newrhsValue);
+			tempresult = lhsRuntimeValue.equals(newrhsValue);
+		}else if (ctx.compop().GT() != null) {
+
+		}else {
+			tempresult= lhsRuntimeValue.equals(rhsvalue);
 		}
+		
+		detail.setOutcome(tempresult);
+		this.ruleResult.addExecutionInstance(detail);
 
-		if (ctx.compop().GT() != null) {
-
-		}
-
-		return lhsRuntimeValue.equals(rhsvalue);
+		return tempresult;
 	}
 
 	@Override
@@ -110,7 +118,12 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		double rhsnum;
 		Object lhsRuntimeValue;
 		Object newrhsValue = rhsvalue.replaceAll("\"", "");
+		
+		ExecutionDetails detail = new ExecutionDetails();
+		RuleExpression exp = new RuleExpression(lhsvalue,rhsvalue,ctx.compop().getText());
+		detail.setExpression(exp);
 
+		boolean tempresult=false;
 		lhsRuntimeValue = this.values.get(lhsvalue);
 		if (lhsRuntimeValue == null) {
 			new RuntimeException("Value missing for Number expression");
@@ -129,26 +142,29 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		System.out.println("rhs: " + ctx.rhs.getText());
 
 		if (ctx.compop().EQUAL() != null) {
-			return lhsnum==rhsnum;
+			tempresult= lhsnum==rhsnum;
 		}
 
 		if (ctx.compop().GT() != null) {
-			return lhsnum>rhsnum;
+			tempresult= lhsnum>rhsnum;
 		}
 		if (ctx.compop().LT() != null) {
-			return lhsnum<rhsnum;
+			tempresult= lhsnum<rhsnum;
 		}
 		if (ctx.compop().NE() != null) {
-			return lhsnum!=rhsnum;
+			tempresult= lhsnum!=rhsnum;
 		}
 		if (ctx.compop().GTE() != null) {
-			return lhsnum>=rhsnum;
+			tempresult= lhsnum>=rhsnum;
 		}
 		if (ctx.compop().LTE() != null) {
-			return lhsnum <= rhsnum;
+			tempresult= lhsnum <= rhsnum;
 		}
+		
+		detail.setOutcome(tempresult);
+		this.ruleResult.addExecutionInstance(detail);
 
-		return lhsRuntimeValue.equals(rhsvalue);
+		return tempresult;
 	}
 
 	@Override
@@ -180,7 +196,6 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 
 	@Override
 	public Object visitVariableExpression(VariableExpressionContext ctx) {
-		ExecutionDetails detail = new ExecutionDetails();
 		System.out.println("inside String exp");
 		String lhsvalue = ctx.lhs.getText();
 		String rhsvalue = ctx.rhs.getText();
@@ -188,6 +203,7 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		Object rhsRuntimeValue;
 		//Object newrhsValue = rhsvalue.replaceAll("\"", "");
 		
+		ExecutionDetails detail = new ExecutionDetails();
 		RuleExpression exp = new RuleExpression(lhsvalue,rhsvalue,ctx.compop().getText());
 		detail.setExpression(exp);
 
@@ -223,7 +239,6 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 			tempresult = lhsRuntimeValue.equals(rhsvalue);
 		}
 		detail.setOutcome(tempresult);
-		
 		this.ruleResult.addExecutionInstance(detail);
 
 		return tempresult;
