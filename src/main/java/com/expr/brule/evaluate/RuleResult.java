@@ -7,6 +7,8 @@ public class RuleResult {
 	private boolean outcome;
 	
 	private ArrayList<ExecutionDetails> executionDetails;
+	private String startTime;
+	private String endTime;
 
 	public RuleResult() {
 		this.executionDetails = new ArrayList();
@@ -30,6 +32,22 @@ public class RuleResult {
 	
 	public void addExecutionInstance(ExecutionDetails detail) {
 		this.executionDetails.add(detail);
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 }

@@ -13,11 +13,24 @@ public class BuilderTest {
 			.variable("B")
 			.rightParenthesis()
 			.and()
-			.expression("C", "=", "D")
+			.leftParenthesis()
+			.variable("C")
+			.equals()
+			.variable("D")
 			.rightParenthesis()
+			.and()
+			.expression("A", "=", "Z")
+			.or()
+			.leftParenthesis()
+			.variable("aaa")
+			.rightParenthesis()
+			/*.and()
+			.leftParenthesis()
+			.expression("C", "=", "D")
+			.rightParenthesis()*/
 		;
 		
-		System.out.println(builder.build());
+		System.out.println("Rule: "+builder.build());
 
 	}
 

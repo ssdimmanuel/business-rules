@@ -128,7 +128,7 @@ public class RuleBalancer extends ParseWrapper {
 	
 	private void handleBalancingForSingleExpression(ExprContext ctx) {
 		ParseContext ctxp = (ParseContext) ctx.getParent();
-		System.out.println("start:"+ctxp.start.getText());
+		//System.out.println("start:"+ctxp.start.getText());
 		if (!ctxp.start.getText().equals("(")) {
 			rw.insertBefore(ctx.start, " ( ");
 			openInsertCount++;

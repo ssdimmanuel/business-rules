@@ -3,6 +3,10 @@
  */
 package com.expr.brule.evaluate;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.antlr.v4.runtime.CharStreams;
@@ -46,11 +50,16 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	 * Parses the rule String passed and calls the top level visit method
 	 */
 	public void evaluate() {
+		String t1 = this.getCurrentTimeUsingCalendar();
+		this.ruleResult.setStartTime(t1);
 		BusinessRuleLexer lexer = new BusinessRuleLexer(CharStreams.fromString(rule));
 		BusinessRuleParser parser = new BusinessRuleParser(new CommonTokenStream(lexer));
 		this.result = (Boolean) this.visit(parser.parse());
+		
+		this.ruleResult.setEndTime(getCurrentTimeUsingCalendar());
 		this.ruleResult.setOutcome(result);
 		System.out.println("Final outcome : " + result);
+		
 	}
 
 	@Override
@@ -264,6 +273,15 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 
 	public void setRuleResult(RuleResult ruleResult) {
 		this.ruleResult = ruleResult;
+	}
+	
+	public String getCurrentTimeUsingCalendar() {
+	    Calendar cal = Calendar.getInstance();
+	    Date date=cal.getTime();
+	    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	    String formattedDate=dateFormat.format(date);
+	    System.out.println("Current time of the day using Calendar - 24 hour format: "+ formattedDate);
+		return formattedDate;
 	}
 
 }

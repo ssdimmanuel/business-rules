@@ -3,11 +3,17 @@
  */
 package com.expr.brule.builder;
 
+import junit.framework.Assert;
+
 /**
  * @author ssdImmanuel
  *
  */
-public class RuleBuilder {
+public class RuleBuilder implements IVariableProvider, IComparisonOperator
+, IOperatorOrParenthesisProvider, IBooleanProvider, IExpressionProvider
+, ILeftParenthesisProvider, IRightParenthesisProvider, ILeftParenthesisOrVariableProvider
+,ILeftParenthesisOrExpressionProvider, IRightParenthesisOrBooleanProvider
+, IRuleBuilder{
 
 	/**
 	 * 
@@ -17,37 +23,60 @@ public class RuleBuilder {
 	
 	private StringBuilder sb = new StringBuilder();
 	
-	public RuleBuilder leftParenthesis() {
+	public static RuleBuilder newBuilder() {
+		return new RuleBuilder();
+	}
+	
+	public ILeftParenthesisOrVariableProvider leftParenthesis() {
 		sb.append(" ( ");
 		return this;
 	}
 	
-	public RuleBuilder rightParenthesis() {
+	public IRightParenthesisOrBooleanProvider rightParenthesis() {
 		sb.append(" ) ");
 		return this;
 	}
 	
 	public RuleBuilder expression(String lhs, String op, String rhs) {
+		Assert.assertNotNull("LHS cannot be null", lhs);
+		Assert.assertNotNull("RHS cannot be null", rhs);
+		if(lhs.trim().equals("")) {
+			throw new RuntimeException("LHS cannot be spaces");
+		}
+		sb.append(" ( ");
 		sb.append(" "+lhs+" "+op+" "+rhs+" ");
+		sb.append(" ) ");
 		return this;
 	}
 	
-	public RuleBuilder variable(String var) {
+	public RuleBuilder expression(String lhs, Operators op, String rhs) {
+		Assert.assertNotNull("LHS cannot be null", lhs);
+		Assert.assertNotNull("RHS cannot be null", rhs);
+		if(lhs.trim().equals("")) {
+			throw new RuntimeException("LHS cannot be spaces");
+		}
+		sb.append(" ( ");
+		sb.append(" "+lhs+" "+op+" "+rhs+" ");
+		sb.append(" ) ");
+		return this;
+	}
+	
+	public IOperatorOrParenthesisProvider variable(String var) {
 		sb.append(" "+var+" ");
 		return this;
 	}
 	
-	public RuleBuilder equals() {
+	public IVariableProvider equals() {
 		sb.append(" = ");
 		return this;
 	}
 	
-	public RuleBuilder lessthan() {
+	public IVariableProvider lessthan() {
 		sb.append(" < ");
 		return this;
 	}
 	
-	public RuleBuilder greaterthan() {
+	public IVariableProvider greaterthan() {
 		sb.append(" > ");
 		return this;
 	}
@@ -62,12 +91,12 @@ public class RuleBuilder {
 		return this;
 	}
 	
-	public RuleBuilder and() {
+	public ILeftParenthesisOrExpressionProvider and() {
 		sb.append(" & ");
 		return this;
 	}
 	
-	public RuleBuilder or() {
+	public ILeftParenthesisOrExpressionProvider or() {
 		sb.append(" or ");
 		return this;
 	}
