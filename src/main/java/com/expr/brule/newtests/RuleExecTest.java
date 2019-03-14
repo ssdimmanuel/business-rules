@@ -1,11 +1,11 @@
-package com.expr.brule.tests;
+package com.expr.brule.newtests;
 
 
 import java.util.HashMap;
 
 import com.expr.brule.evaluate.ExecutionEngine;
 
-public class RuleTest5 {
+public class RuleExecTest {
 
 	public static void main(String[] args) throws Exception {
 
@@ -14,12 +14,14 @@ public class RuleTest5 {
 		
 		System.out.println("Input rule: "+rule);
 		
-		HashMap values = new HashMap();
+		HashMap<String, Object> values = new HashMap();
 		values.put("IND1", 1.0);
 		values.put("IND2", 22.1);
 		
 		ExecutionEngine eng = new ExecutionEngine(rule, values);
 		eng.evaluate();
+		
+		System.out.println(eng.getRuleResult());
 		
 	}
 

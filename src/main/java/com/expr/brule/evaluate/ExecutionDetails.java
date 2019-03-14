@@ -27,5 +27,9 @@ public class ExecutionDetails {
 	public void setOutcome(boolean outcome) {
 		this.outcome = outcome;
 	}
+	
+	public String toString() {
+		return ""+this.expression.toString()+">> Outcome: "+this.outcome;
+	}
 
 }

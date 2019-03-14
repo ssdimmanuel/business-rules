@@ -3,11 +3,16 @@
  */
 package com.expr.brule.evaluate;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -26,18 +31,75 @@ import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
 import com.expr.brule.editing.RuleExpression;
 
 /**
+ * Executes a business rule
+ * <p>
+ * A Subclass of the ANTLR generated Visitor to evaluate expressions.
+ * When an expression node is visited (string or number or variable), the expression is 
+ * evaluated using the context data provided through the <code>HashMap</code>
+ * <p>
+ * The result of execution is a <code>RuleResult</code> object which has the details of all
+ * the expressions evaluated and their outcome (true or false) and the overall outcome
  * @author ssdImmanuel
  *
  */
 public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 
+	/**
+	 * Pass rule and context as a HashMap
+	 * @param rule
+	 * @param values
+	 */
 	public ExecutionEngine(String rule, HashMap<String, Object> values) {
 		this.rule = rule;
 		this.values = values;
 		this.debug = false;
 		this.ruleResult = new RuleResult();
 	}
+	
+	/**
+	 * Pass rule and context as Property File
+	 * @param rule
+	 * @param data
+	 */
+	public ExecutionEngine(String rule, File data) {
+		this.rule = rule;
+		this.values = this.getDataMap(data);
+		if(values.size()<=0) {
+			throw new ContextNotPassedException("Empty rule context data");
+		}
+		this.debug = false;
+		this.ruleResult = new RuleResult();
+	} 
+	
+	/**
+	 * Convert values from a property file to a HashMap
+	 * @param file
+	 * @return
+	 */
+	private HashMap<String, Object> getDataMap(File file) {
+		Properties prop = new Properties();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(file);
+			prop.load(fis);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		for(String name : prop.stringPropertyNames()) {
+			String value = prop.getProperty(name);
+			map.put(name, value);
+		}
+		
+		return map;
+	}
 
+	/**
+	 * Rule expression text
+	 */
 	private String rule;
 	private HashMap values;
 
@@ -118,6 +180,9 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 		return tempresult;
 	}
 
+	/**
+	 * Evaluate a Number expression . the RHS is a numeric
+	 */
 	@Override
 	public Object visitNumberExpression(NumberExpressionContext ctx) {
 		System.out.println("inside Number exp");
@@ -278,9 +343,9 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	public String getCurrentTimeUsingCalendar() {
 	    Calendar cal = Calendar.getInstance();
 	    Date date=cal.getTime();
-	    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	    String formattedDate=dateFormat.format(date);
-	    System.out.println("Current time of the day using Calendar - 24 hour format: "+ formattedDate);
+	    System.out.println("Current time of the day  : "+ formattedDate);
 		return formattedDate;
 	}
 

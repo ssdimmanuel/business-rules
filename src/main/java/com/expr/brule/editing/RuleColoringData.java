@@ -6,7 +6,6 @@ package com.expr.brule.editing;
 import java.util.ArrayList;
 
 import com.expr.brule.common.ParseWrapper;
-import com.expr.brule.core.BusinessRuleBaseListener;
 import com.expr.brule.core.BusinessRuleParser.BinopContext;
 import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.StringExpressionContext;

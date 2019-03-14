@@ -12,20 +12,39 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<antlr.version>4.7.1</antlr.version>
+		<xmlunit.version>2.6.2</xmlunit.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4</artifactId>
-			<version>4.7.1</version>
+			<version>${antlr.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.xmlunit</groupId>
+			<artifactId>xmlunit-core</artifactId>
+			<version>${xmlunit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xmlunit</groupId>
+			<artifactId>xmlunit-matchers</artifactId>
+			<version>${xmlunit.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.sf.tweety.logics/pl -->
+		<dependency>
+			<groupId>net.sf.tweety.logics</groupId>
+			<artifactId>pl</artifactId>
+			<version>1.12</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

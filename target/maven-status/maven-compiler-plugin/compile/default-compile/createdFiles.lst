@@ -1,4 +1,3 @@
-com\expr\brule\edits\RuleColoringData.class
 com\expr\brule\edits\RuleVariableEditor.class
 com\expr\brule\core\BusinessRuleListener.class
 com\expr\brule\core\BusinessRuleBaseListener.class
@@ -34,7 +33,6 @@ com\expr\brule\core\RuleConstants.class
 com\expr\brule\evaluate\RuleResult.class
 com\expr\brule\evaluate\RuleExecutionContext.class
 com\expr\brule\core\BusinessRuleParser$EnclosedExpressionContext.class
-com\expr\brule\tests\RuleTest5.class
 com\expr\brule\editing\RangeData.class
 com\expr\brule\core\BusinessRuleParser.class
 com\expr\brule\core\BusinessRuleParser$LogicalExpressionContext.class

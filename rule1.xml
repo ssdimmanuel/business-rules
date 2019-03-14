@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<business-rule expressionCount="2" variables="[amount, ind]">
+  <binaryExpression depth="1" operator="and">
+    <variableExpression depth="1" position="1" text="ind=Y"/>
+    <NumberExpression depth="1" position="2" text="amount=1000000"/>
+  </binaryExpression>
+</business-rule>

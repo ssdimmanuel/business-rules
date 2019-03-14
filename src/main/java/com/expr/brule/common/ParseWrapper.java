@@ -25,9 +25,13 @@ import com.expr.brule.core.BusinessRuleParser.ParseContext;
 public class ParseWrapper extends BusinessRuleBaseListener{
 
 	/**
-	 * 
+	 * Token rewriter to edit the rule 
 	 */
 	protected TokenStreamRewriter rw;
+	
+	/**
+	 * parser instance
+	 */
 	protected BusinessRuleParser parser;
 	
 	private String rule;

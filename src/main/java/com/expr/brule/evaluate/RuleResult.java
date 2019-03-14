@@ -2,6 +2,11 @@ package com.expr.brule.evaluate;
 
 import java.util.ArrayList;
 
+/**
+ * Accumulated Result of rule execution
+ * @author ssdImmanuel
+ *
+ */
 public class RuleResult {
 	
 	private boolean outcome;
@@ -48,6 +53,12 @@ public class RuleResult {
 
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+	
+	public String toString() {
+		return this.executionDetails.stream()
+				.map(exec -> exec.toString()+"\n")
+				.reduce("", String::concat);
 	}
 
 }
