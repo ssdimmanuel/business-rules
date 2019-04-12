@@ -5,12 +5,8 @@ import org.antlr.v4.runtime.tree.pattern.ParseTreePattern;
 
 import com.expr.brule.common.ParseWrapper;
 import com.expr.brule.core.BusinessRuleParser.EnclosedExpressionContext;
-import com.expr.brule.core.BusinessRuleParser.ExprContext;
 import com.expr.brule.core.BusinessRuleParser.LogicalExpressionContext;
-import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.ParseContext;
-import com.expr.brule.core.BusinessRuleParser.StringExpressionContext;
-import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
 
 public class FullRuleMatcher extends ParseWrapper {
 

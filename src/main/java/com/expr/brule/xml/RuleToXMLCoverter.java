@@ -22,6 +22,7 @@ import org.w3c.dom.Element;
 import com.expr.brule.common.ParseWrapper;
 import com.expr.brule.core.BusinessRuleParser.BinopContext;
 import com.expr.brule.core.BusinessRuleParser.BooleanVariableContext;
+import com.expr.brule.core.BusinessRuleParser.ExprContext;
 import com.expr.brule.core.BusinessRuleParser.LogicalExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.ParseContext;
@@ -35,19 +36,20 @@ import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
  *
  */
 public class RuleToXMLCoverter extends ParseWrapper {
-
-	public RuleToXMLCoverter(String rule, File output) {
-		super(rule);
-		this.output = output;
-	}
 	
 	public RuleToXMLCoverter(String rule) {
-		super(rule);
-		this.output = null;
+		this(ConvertorConfigBuilder.getDefaultConfig(rule));
+	}
+
+	public RuleToXMLCoverter(ConvertorConfigBuilder config) {
+		super(config.getRule());
+		this.config = config;
 	}
 
 	private Document doc;
 	private Element root;
+	private ConvertorConfigBuilder config;
+	
 	/**
 	 * Stack datastructure to keep track of nesting of expressions
 	 */
@@ -68,7 +70,7 @@ public class RuleToXMLCoverter extends ParseWrapper {
         try {
 			dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.newDocument();
-			root = doc.createElement("business-rule");
+			root = doc.createElement(RuleNodeType.businessRule.toString());
 			doc.appendChild(root);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -92,8 +94,8 @@ public class RuleToXMLCoverter extends ParseWrapper {
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 	        DOMSource source = new DOMSource(doc);
 
-	        if(output!=null) {
-	        	StreamResult file = new StreamResult(output);
+	        if(this.config.isWriteToFile()) {
+	        	StreamResult file = new StreamResult(this.config.getOutfile());
 		        transformer.transform(source, file);
 	        }
 
@@ -122,14 +124,23 @@ public class RuleToXMLCoverter extends ParseWrapper {
 	@Override
 	public void enterLogicalExpression(LogicalExpressionContext ctx) {
 		depth++;
-		Element newroot = doc.createElement("binaryExpression");
-		newroot.setAttribute("operator", ctx.binop().getText());
-		newroot.setAttribute("depth", String.valueOf(depth));
+		String tagname ="BinaryExpression";
+		if(ctx.binop().getText().equals("&")) {
+			tagname = RuleNodeType.and.toString();
+		}else if(ctx.binop().getText().equals("|")) {
+			tagname = RuleNodeType.or.toString();
+		}else {
+			tagname = ctx.binop().getText().toLowerCase();
+		}
+		Element newroot = doc.createElement(tagname);
+		if (config.isIncludeDepth()) {
+			newroot.setAttribute("depth", String.valueOf(depth));
+		}
+		
 		root.appendChild(newroot);
 		this.rootStack.push(root);
 		root = newroot;
 	}
-
 
 	@Override
 	public void exitLogicalExpression(LogicalExpressionContext ctx) {
@@ -140,10 +151,14 @@ public class RuleToXMLCoverter extends ParseWrapper {
 	@Override
 	public void enterStringExpression(StringExpressionContext ctx) {
 		this.expressionCount++;
-		Element node = doc.createElement("StringrExpression");
+		Element node = doc.createElement(RuleNodeType.StringExpression.toString());
+		this.setupNodes(ctx, node);
+		String remquot = ctx.rhs.getText();
+		remquot = remquot.replaceAll("^\"|\"$", "");
 		node.setAttribute("text", ctx.getText());
-		node.setAttribute("position", String.valueOf(expressionCount));
-		node.setAttribute("depth", String.valueOf(depth));
+		node.setAttribute("lhs", ctx.lhs.getText());
+		node.setAttribute("rhs", remquot);
+		node.setAttribute("operator", ctx.compop().getText());
 		root.appendChild(node);
 		lhsused.add(ctx.lhs.getText());
 	}
@@ -151,10 +166,12 @@ public class RuleToXMLCoverter extends ParseWrapper {
 	@Override
 	public void enterNumberExpression(NumberExpressionContext ctx) {
 		this.expressionCount++;
-		Element node = doc.createElement("NumberExpression");
+		Element node = doc.createElement(RuleNodeType.NumberExpression.toString());
+		this.setupNodes(ctx, node);
 		node.setAttribute("text", ctx.getText());
-		node.setAttribute("position", String.valueOf(expressionCount));
-		node.setAttribute("depth", String.valueOf(depth));
+		node.setAttribute("lhs", ctx.lhs.getText());
+		node.setAttribute("rhs", ctx.rhs.getText());
+		node.setAttribute("operator", ctx.compop().getText());
 		root.appendChild(node);
 		lhsused.add(ctx.lhs.getText());
 	}
@@ -162,22 +179,34 @@ public class RuleToXMLCoverter extends ParseWrapper {
 	@Override
 	public void enterBooleanVariable(BooleanVariableContext ctx) {
 		this.expressionCount++;
-		Element node = doc.createElement("booleanExpression");
+		Element node = doc.createElement("BooleanExpression");
+		this.setupNodes(ctx, node);
 		node.setAttribute("text", ctx.getText());
-		node.setAttribute("position", String.valueOf(expressionCount));
-		node.setAttribute("depth", String.valueOf(depth));
 		root.appendChild(node);
 	}
 
 	@Override
 	public void enterVariableExpression(VariableExpressionContext ctx) {
 		this.expressionCount++;
-		Element node = doc.createElement("variableExpression");
+		Element node = doc.createElement(RuleNodeType.VariableExpression.toString());
+		this.setupNodes(ctx, node);
 		node.setAttribute("text", ctx.getText());
-		node.setAttribute("position", String.valueOf(expressionCount));
-		node.setAttribute("depth", String.valueOf(depth));
+		node.setAttribute("lhs", ctx.lhs.getText());
+		node.setAttribute("rhs", ctx.rhs.getText());
+		node.setAttribute("operator", ctx.compop().getText());
 		root.appendChild(node);
 		lhsused.add(ctx.lhs.getText());
+	}
+	
+	
+	private void setupNodes(ExprContext ctx, Element node) {
+		
+		if(this.config.isIncludeSequence()) {
+			node.setAttribute("position", String.valueOf(expressionCount));
+		}
+		if(this.config.isIncludeDepth()) {
+			node.setAttribute("depth", String.valueOf(depth));
+		}
 	}
 
 

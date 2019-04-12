@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<business-rule expressionCount="2" variables="[amount, ind]">
-  <binaryExpression depth="1" operator="and">
-    <variableExpression depth="1" position="1" text="ind=Y"/>
-    <NumberExpression depth="1" position="2" text="amount=1000000"/>
-  </binaryExpression>
-</business-rule>
+<businessRule expressionCount="12" variables="[a, amount, usertype, userlocationcode]">
+  <and>
+    <and>
+      <and>
+        <and>
+          <BooleanExpression text="ispresent"/>
+          <NumberExpression lhs="a" operator="=" rhs="100" text="a=100"/>
+        </and>
+        <NumberExpression lhs="amount" operator="=" rhs="900" text="amount=900"/>
+      </and>
+      <NumberExpression lhs="usertype" operator="=" rhs="2" text="usertype=2"/>
+    </and>
+    <or>
+      <or>
+        <or>
+          <or>
+            <or>
+              <or>
+                <or>
+                  <NumberExpression lhs="userlocationcode" operator="=" rhs="33" text="userlocationcode=33"/>
+                  <NumberExpression lhs="userlocationcode" operator="=" rhs="36" text="userlocationcode=36"/>
+                </or>
+                <NumberExpression lhs="userlocationcode" operator="=" rhs="37" text="userlocationcode=37"/>
+              </or>
+              <NumberExpression lhs="userlocationcode" operator="=" rhs="38" text="userlocationcode=38"/>
+            </or>
+            <NumberExpression lhs="userlocationcode" operator="=" rhs="39" text="userlocationcode=39"/>
+          </or>
+          <NumberExpression lhs="userlocationcode" operator="=" rhs="40" text="userlocationcode=40"/>
+        </or>
+        <NumberExpression lhs="userlocationcode" operator="=" rhs="41" text="userlocationcode=41"/>
+      </or>
+      <NumberExpression lhs="userlocationcode" operator="=" rhs="42" text="userlocationcode=42"/>
+    </or>
+  </and>
+</businessRule>

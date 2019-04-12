@@ -6,6 +6,7 @@ package com.expr.brule.evaluate;
 import java.util.List;
 
 /**
+ * Execute a set of rules serially
  * 
  * @author ssdImmanuel
  *
@@ -13,7 +14,7 @@ import java.util.List;
 public class RuleSetExecutor {
 
 	/**
-	 * 
+	 * Rule set to be executed
 	 */
 	private List<RuleExecutionContext> ruleSet;
 	
