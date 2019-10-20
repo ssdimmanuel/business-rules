@@ -1,9 +1,10 @@
-// Generated from BusinessRule.g4 by ANTLR 4.7.1
+// Generated from BusinessRule.g4 by ANTLR 4.4
 
 package com.expr.brule.core;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -18,156 +19,192 @@ public class BusinessRuleBaseListener implements BusinessRuleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParse(BusinessRuleParser.ParseContext ctx) { }
+	@Override public void enterNumberExpression(@NotNull BusinessRuleParser.NumberExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParse(BusinessRuleParser.ParseContext ctx) { }
+	@Override public void exitNumberExpression(@NotNull BusinessRuleParser.NumberExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringExpression(BusinessRuleParser.StringExpressionContext ctx) { }
+	@Override public void enterEnclosedExpression(@NotNull BusinessRuleParser.EnclosedExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringExpression(BusinessRuleParser.StringExpressionContext ctx) { }
+	@Override public void exitEnclosedExpression(@NotNull BusinessRuleParser.EnclosedExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberExpression(BusinessRuleParser.NumberExpressionContext ctx) { }
+	@Override public void enterBooleanFalse(@NotNull BusinessRuleParser.BooleanFalseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberExpression(BusinessRuleParser.NumberExpressionContext ctx) { }
+	@Override public void exitBooleanFalse(@NotNull BusinessRuleParser.BooleanFalseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanTrue(BusinessRuleParser.BooleanTrueContext ctx) { }
+	@Override public void enterParse(@NotNull BusinessRuleParser.ParseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanTrue(BusinessRuleParser.BooleanTrueContext ctx) { }
+	@Override public void exitParse(@NotNull BusinessRuleParser.ParseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnclosedExpression(BusinessRuleParser.EnclosedExpressionContext ctx) { }
+	@Override public void enterLogicalExpression(@NotNull BusinessRuleParser.LogicalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnclosedExpression(BusinessRuleParser.EnclosedExpressionContext ctx) { }
+	@Override public void exitLogicalExpression(@NotNull BusinessRuleParser.LogicalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanFalse(BusinessRuleParser.BooleanFalseContext ctx) { }
+	@Override public void enterVariableExpression(@NotNull BusinessRuleParser.VariableExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanFalse(BusinessRuleParser.BooleanFalseContext ctx) { }
+	@Override public void exitVariableExpression(@NotNull BusinessRuleParser.VariableExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanVariable(BusinessRuleParser.BooleanVariableContext ctx) { }
+	@Override public void enterFunctionExpression(@NotNull BusinessRuleParser.FunctionExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanVariable(BusinessRuleParser.BooleanVariableContext ctx) { }
+	@Override public void exitFunctionExpression(@NotNull BusinessRuleParser.FunctionExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLogicalExpression(BusinessRuleParser.LogicalExpressionContext ctx) { }
+	@Override public void enterCompop(@NotNull BusinessRuleParser.CompopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogicalExpression(BusinessRuleParser.LogicalExpressionContext ctx) { }
+	@Override public void exitCompop(@NotNull BusinessRuleParser.CompopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableExpression(BusinessRuleParser.VariableExpressionContext ctx) { }
+	@Override public void enterArgs(@NotNull BusinessRuleParser.ArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableExpression(BusinessRuleParser.VariableExpressionContext ctx) { }
+	@Override public void exitArgs(@NotNull BusinessRuleParser.ArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinop(BusinessRuleParser.BinopContext ctx) { }
+	@Override public void enterStringExpression(@NotNull BusinessRuleParser.StringExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinop(BusinessRuleParser.BinopContext ctx) { }
+	@Override public void exitStringExpression(@NotNull BusinessRuleParser.StringExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCompop(BusinessRuleParser.CompopContext ctx) { }
+	@Override public void enterBooleanTrue(@NotNull BusinessRuleParser.BooleanTrueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCompop(BusinessRuleParser.CompopContext ctx) { }
+	@Override public void exitBooleanTrue(@NotNull BusinessRuleParser.BooleanTrueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunction(@NotNull BusinessRuleParser.FunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction(@NotNull BusinessRuleParser.FunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBooleanVariable(@NotNull BusinessRuleParser.BooleanVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBooleanVariable(@NotNull BusinessRuleParser.BooleanVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBinop(@NotNull BusinessRuleParser.BinopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBinop(@NotNull BusinessRuleParser.BinopContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(@NotNull TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
 }

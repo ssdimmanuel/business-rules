@@ -12,7 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -20,9 +22,12 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import com.expr.brule.core.BusinessRuleBaseVisitor;
 import com.expr.brule.core.BusinessRuleLexer;
 import com.expr.brule.core.BusinessRuleParser;
+import com.expr.brule.core.BusinessRuleParser.ArgsContext;
 import com.expr.brule.core.BusinessRuleParser.BinopContext;
 import com.expr.brule.core.BusinessRuleParser.CompopContext;
 import com.expr.brule.core.BusinessRuleParser.EnclosedExpressionContext;
+import com.expr.brule.core.BusinessRuleParser.FunctionContext;
+import com.expr.brule.core.BusinessRuleParser.FunctionExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.LogicalExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.ParseContext;
@@ -34,8 +39,8 @@ import com.expr.brule.editing.RuleExpression;
  * Executes a business rule
  * <p>
  * A Subclass of the ANTLR generated Visitor to evaluate expressions.
- * When an expression node is visited (string or number or variable), the expression is 
- * evaluated using the context data provided through the <code>HashMap</code>
+ * When an expression node is visited (string or number or variable or function), the expression is 
+ * evaluated using the context data provided through the <code>HashMap</code> or the property file
  * <p>
  * The result of execution is a <code>RuleResult</code> object which has the details of all
  * the expressions evaluated and their outcome (true or false) and the overall outcome
@@ -101,6 +106,9 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	 * Rule expression text
 	 */
 	private String rule;
+	/**
+	 * Runtime values for variables
+	 */
 	private HashMap values;
 
 	private Boolean result;
@@ -135,6 +143,47 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	@Override
 	public Object visitEnclosedExpression(EnclosedExpressionContext ctx) {
 		return super.visit(ctx.expr());
+	}
+
+	
+	@Override
+	public Object visitFunctionExpression(FunctionExpressionContext ctx) {
+		FunctionContext fctx = ctx.function();
+		String functionName = fctx.VARIABLE().getText();
+		Object impl = values.get(functionName);
+		if(impl==null) {
+			throw new RuntimeException("Function not found for: "+functionName);
+		}
+		
+		boolean result;
+		if(impl instanceof IFunctionHandler) {
+			ArgsContext argc = fctx.args();
+			String []arglist = new String[0];
+			if(argc!=null) {
+				List<String> strargs = argc.STRING()
+						.stream()
+						.map(node -> node.getText())
+						.collect(Collectors.toList());
+				arglist = strargs.toArray(arglist);
+			}
+			System.out.println("*** "+arglist.length);
+			for(String arg : arglist) {
+				System.out.println("*** Arg: "+arg);
+			}
+			result = executeFunction((IFunctionHandler)impl, arglist);
+		}else {
+			throw new RuntimeException("Function passed for: "+functionName+" not an implementation of IFunctionHandler");
+		}
+		
+		return result;
+	}
+	
+	private boolean executeFunction(IFunctionHandler handler, String...args) {
+		boolean isValid = handler.isValidationSuccess(args);
+		if(!isValid) {
+			throw new RuntimeException("Incompatible Arguments passed");
+		}
+		return handler.execute();
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class RuleXMLToStringTest {
 				+ "or userlocationcode = 42 "
 				+ ")";
 		
-		rule = "(a=100 and (amount = 900 or (z = y and z = 1)) ";
+		rule = "(a=100 and amount = 900 or z = y) ";
 		System.out.println("Input rule: "+rule);
 		
 		RuleToXMLCoverter conv = new RuleToXMLCoverter(rule);

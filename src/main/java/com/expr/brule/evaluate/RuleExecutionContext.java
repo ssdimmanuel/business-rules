@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 /**
  * Context information supplied as input to the <code>ExecutionEngine
+ * <p>
+ * The context consists of the rule and the data required to execute the business rule
  * @author ssdImmanuel
  *
  */

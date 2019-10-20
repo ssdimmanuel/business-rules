@@ -4,6 +4,7 @@ C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brul
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IOperatorOrParenthesisProvider.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IRightParenthesisProvider.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\common\ThrowingErrorListener.java
+C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\evaluate\IFunctionHandler.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\tests\RuleTest.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\BuilderTest.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\evaluate\ContextNotPassedException.java
@@ -31,6 +32,7 @@ C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brul
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\evaluate\RuleResult.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IRuleBuilder.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\evaluate\ExecutionEngine.java
+C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\RuleFunctionExecTest.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\stats\ExtractExpression.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\xml\RuleNodeType.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\xml\RuleToXMLCoverter.java
@@ -51,7 +53,9 @@ C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brul
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IParenthesisProvider.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\RuleExecTest2.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\core\BusinessRuleListener.java
+C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\xml\RuleXMLHandler.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\RuleBuilder.java
+C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\RuleXMLToStringTest.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IVariableProvider.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\BuilderTest2.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\RuleConvTest.java
@@ -59,7 +63,6 @@ C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brul
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\TestPattern.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\edits\RuleExpressionEditor.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\ReplaceTest4.java
-C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\evaluate\IBoolean.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\BalanceTest.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\newtests\RuleExecTest5.java
 C:\Users\ssdImmanuel\workspace-photon\business-rules\src\main\java\com\expr\brule\builder\IExpressionProvider.java

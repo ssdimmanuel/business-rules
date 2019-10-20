@@ -1,7 +1,8 @@
-// Generated from BusinessRule.g4 by ANTLR 4.7.1
+// Generated from BusinessRule.g4 by ANTLR 4.4
 
 package com.expr.brule.core;
 
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -10,129 +11,161 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface BusinessRuleListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link BusinessRuleParser#parse}.
-	 * @param ctx the parse tree
-	 */
-	void enterParse(BusinessRuleParser.ParseContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link BusinessRuleParser#parse}.
-	 * @param ctx the parse tree
-	 */
-	void exitParse(BusinessRuleParser.ParseContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code stringExpression}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterStringExpression(BusinessRuleParser.StringExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code stringExpression}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitStringExpression(BusinessRuleParser.StringExpressionContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code numberExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumberExpression(BusinessRuleParser.NumberExpressionContext ctx);
+	void enterNumberExpression(@NotNull BusinessRuleParser.NumberExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code numberExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumberExpression(BusinessRuleParser.NumberExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code booleanTrue}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterBooleanTrue(BusinessRuleParser.BooleanTrueContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code booleanTrue}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitBooleanTrue(BusinessRuleParser.BooleanTrueContext ctx);
+	void exitNumberExpression(@NotNull BusinessRuleParser.NumberExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code enclosedExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterEnclosedExpression(BusinessRuleParser.EnclosedExpressionContext ctx);
+	void enterEnclosedExpression(@NotNull BusinessRuleParser.EnclosedExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code enclosedExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitEnclosedExpression(BusinessRuleParser.EnclosedExpressionContext ctx);
+	void exitEnclosedExpression(@NotNull BusinessRuleParser.EnclosedExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code booleanFalse}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBooleanFalse(BusinessRuleParser.BooleanFalseContext ctx);
+	void enterBooleanFalse(@NotNull BusinessRuleParser.BooleanFalseContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code booleanFalse}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBooleanFalse(BusinessRuleParser.BooleanFalseContext ctx);
+	void exitBooleanFalse(@NotNull BusinessRuleParser.BooleanFalseContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code booleanVariable}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * Enter a parse tree produced by {@link BusinessRuleParser#parse}.
 	 * @param ctx the parse tree
 	 */
-	void enterBooleanVariable(BusinessRuleParser.BooleanVariableContext ctx);
+	void enterParse(@NotNull BusinessRuleParser.ParseContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code booleanVariable}
-	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * Exit a parse tree produced by {@link BusinessRuleParser#parse}.
 	 * @param ctx the parse tree
 	 */
-	void exitBooleanVariable(BusinessRuleParser.BooleanVariableContext ctx);
+	void exitParse(@NotNull BusinessRuleParser.ParseContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code logicalExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterLogicalExpression(BusinessRuleParser.LogicalExpressionContext ctx);
+	void enterLogicalExpression(@NotNull BusinessRuleParser.LogicalExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code logicalExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitLogicalExpression(BusinessRuleParser.LogicalExpressionContext ctx);
+	void exitLogicalExpression(@NotNull BusinessRuleParser.LogicalExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code variableExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableExpression(BusinessRuleParser.VariableExpressionContext ctx);
+	void enterVariableExpression(@NotNull BusinessRuleParser.VariableExpressionContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code variableExpression}
 	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableExpression(BusinessRuleParser.VariableExpressionContext ctx);
+	void exitVariableExpression(@NotNull BusinessRuleParser.VariableExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link BusinessRuleParser#binop}.
+	 * Enter a parse tree produced by the {@code functionExpression}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinop(BusinessRuleParser.BinopContext ctx);
+	void enterFunctionExpression(@NotNull BusinessRuleParser.FunctionExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link BusinessRuleParser#binop}.
+	 * Exit a parse tree produced by the {@code functionExpression}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinop(BusinessRuleParser.BinopContext ctx);
+	void exitFunctionExpression(@NotNull BusinessRuleParser.FunctionExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BusinessRuleParser#compop}.
 	 * @param ctx the parse tree
 	 */
-	void enterCompop(BusinessRuleParser.CompopContext ctx);
+	void enterCompop(@NotNull BusinessRuleParser.CompopContext ctx);
 	/**
 	 * Exit a parse tree produced by {@link BusinessRuleParser#compop}.
 	 * @param ctx the parse tree
 	 */
-	void exitCompop(BusinessRuleParser.CompopContext ctx);
+	void exitCompop(@NotNull BusinessRuleParser.CompopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BusinessRuleParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgs(@NotNull BusinessRuleParser.ArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BusinessRuleParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgs(@NotNull BusinessRuleParser.ArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code stringExpression}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringExpression(@NotNull BusinessRuleParser.StringExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code stringExpression}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringExpression(@NotNull BusinessRuleParser.StringExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code booleanTrue}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBooleanTrue(@NotNull BusinessRuleParser.BooleanTrueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code booleanTrue}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBooleanTrue(@NotNull BusinessRuleParser.BooleanTrueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BusinessRuleParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction(@NotNull BusinessRuleParser.FunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BusinessRuleParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction(@NotNull BusinessRuleParser.FunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code booleanVariable}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBooleanVariable(@NotNull BusinessRuleParser.BooleanVariableContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code booleanVariable}
+	 * labeled alternative in {@link BusinessRuleParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBooleanVariable(@NotNull BusinessRuleParser.BooleanVariableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BusinessRuleParser#binop}.
+	 * @param ctx the parse tree
+	 */
+	void enterBinop(@NotNull BusinessRuleParser.BinopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BusinessRuleParser#binop}.
+	 * @param ctx the parse tree
+	 */
+	void exitBinop(@NotNull BusinessRuleParser.BinopContext ctx);
 }
