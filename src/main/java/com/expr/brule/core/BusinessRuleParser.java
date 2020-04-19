@@ -1,4 +1,4 @@
-// Generated from BusinessRule.g4 by ANTLR 4.4
+// Generated from BusinessRule.g4 by ANTLR 4.7.2
 
 package com.expr.brule.core;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class BusinessRuleParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -22,22 +22,65 @@ public class BusinessRuleParser extends Parser {
 		T__0=1, TRUE=2, FALSE=3, STRING=4, QUOTE=5, LEFTPAREN=6, RIGHTPAREN=7, 
 		EQUAL=8, LT=9, GT=10, LTE=11, GTE=12, NE=13, AND=14, OR=15, VARIABLE=16, 
 		NUMBER=17, SPACE=18;
-	public static final String[] tokenNames = {
-		"<INVALID>", "','", "TRUE", "FALSE", "STRING", "'\"'", "'('", "')'", "EQUAL", 
-		"LT", "GT", "LTE", "GTE", "NE", "AND", "OR", "VARIABLE", "NUMBER", "SPACE"
-	};
 	public static final int
 		RULE_parse = 0, RULE_expr = 1, RULE_binop = 2, RULE_compop = 3, RULE_function = 4, 
 		RULE_args = 5;
-	public static final String[] ruleNames = {
-		"parse", "expr", "binop", "compop", "function", "args"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"parse", "expr", "binop", "compop", "function", "args"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
+
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, "','", null, null, null, "'\"'", "'('", "')'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, null, "TRUE", "FALSE", "STRING", "QUOTE", "LEFTPAREN", "RIGHTPAREN", 
+			"EQUAL", "LT", "GT", "LTE", "GTE", "NE", "AND", "OR", "VARIABLE", "NUMBER", 
+			"SPACE"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
+	/**
+	 * @deprecated Use {@link #VOCABULARY} instead.
+	 */
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
+
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
+
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
 
 	@Override
 	public String getGrammarFileName() { return "BusinessRule.g4"; }
-
-	@Override
-	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -52,6 +95,7 @@ public class BusinessRuleParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class ParseContext extends ParserRuleContext {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -82,8 +126,10 @@ public class BusinessRuleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(12); expr(0);
-			setState(13); match(EOF);
+			setState(12);
+			expr(0);
+			setState(13);
+			match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -114,8 +160,8 @@ public class BusinessRuleParser extends Parser {
 		public CompopContext compop() {
 			return getRuleContext(CompopContext.class,0);
 		}
-		public TerminalNode STRING() { return getToken(BusinessRuleParser.STRING, 0); }
 		public TerminalNode VARIABLE() { return getToken(BusinessRuleParser.VARIABLE, 0); }
+		public TerminalNode STRING() { return getToken(BusinessRuleParser.STRING, 0); }
 		public StringExpressionContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -172,11 +218,11 @@ public class BusinessRuleParser extends Parser {
 		}
 	}
 	public static class EnclosedExpressionContext extends ExprContext {
+		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public TerminalNode RIGHTPAREN() { return getToken(BusinessRuleParser.RIGHTPAREN, 0); }
-		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
 		public EnclosedExpressionContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -312,6 +358,7 @@ public class BusinessRuleParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(36);
+			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				{
@@ -319,9 +366,12 @@ public class BusinessRuleParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(16); ((VariableExpressionContext)_localctx).lhs = match(VARIABLE);
-				setState(17); compop();
-				setState(18); ((VariableExpressionContext)_localctx).rhs = match(VARIABLE);
+				setState(16);
+				((VariableExpressionContext)_localctx).lhs = match(VARIABLE);
+				setState(17);
+				compop();
+				setState(18);
+				((VariableExpressionContext)_localctx).rhs = match(VARIABLE);
 				}
 				break;
 			case 2:
@@ -329,9 +379,12 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new StringExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(20); ((StringExpressionContext)_localctx).lhs = match(VARIABLE);
-				setState(21); compop();
-				setState(22); ((StringExpressionContext)_localctx).rhs = match(STRING);
+				setState(20);
+				((StringExpressionContext)_localctx).lhs = match(VARIABLE);
+				setState(21);
+				compop();
+				setState(22);
+				((StringExpressionContext)_localctx).rhs = match(STRING);
 				}
 				break;
 			case 3:
@@ -339,9 +392,12 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new NumberExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(24); ((NumberExpressionContext)_localctx).lhs = match(VARIABLE);
-				setState(25); compop();
-				setState(26); ((NumberExpressionContext)_localctx).rhs = match(NUMBER);
+				setState(24);
+				((NumberExpressionContext)_localctx).lhs = match(VARIABLE);
+				setState(25);
+				compop();
+				setState(26);
+				((NumberExpressionContext)_localctx).rhs = match(NUMBER);
 				}
 				break;
 			case 4:
@@ -349,7 +405,8 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new FunctionExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(28); function();
+				setState(28);
+				function();
 				}
 				break;
 			case 5:
@@ -357,7 +414,8 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new BooleanTrueContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(29); match(TRUE);
+				setState(29);
+				match(TRUE);
 				}
 				break;
 			case 6:
@@ -365,7 +423,8 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new BooleanFalseContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(30); match(FALSE);
+				setState(30);
+				match(FALSE);
 				}
 				break;
 			case 7:
@@ -373,7 +432,8 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new BooleanVariableContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(31); match(VARIABLE);
+				setState(31);
+				match(VARIABLE);
 				}
 				break;
 			case 8:
@@ -381,9 +441,12 @@ public class BusinessRuleParser extends Parser {
 				_localctx = new EnclosedExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(32); match(LEFTPAREN);
-				setState(33); expr(0);
-				setState(34); match(RIGHTPAREN);
+				setState(32);
+				match(LEFTPAREN);
+				setState(33);
+				expr(0);
+				setState(34);
+				match(RIGHTPAREN);
 				}
 				break;
 			}
@@ -401,8 +464,10 @@ public class BusinessRuleParser extends Parser {
 					pushNewRecursionContext(_localctx, _startState, RULE_expr);
 					setState(38);
 					if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-					setState(39); binop();
-					setState(40); expr(10);
+					setState(39);
+					binop();
+					setState(40);
+					expr(10);
 					}
 					} 
 				}
@@ -457,7 +522,11 @@ public class BusinessRuleParser extends Parser {
 			if ( !(_la==AND || _la==OR) ) {
 			_errHandler.recoverInline(this);
 			}
-			consume();
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -474,10 +543,10 @@ public class BusinessRuleParser extends Parser {
 	public static class CompopContext extends ParserRuleContext {
 		public TerminalNode EQUAL() { return getToken(BusinessRuleParser.EQUAL, 0); }
 		public TerminalNode LT() { return getToken(BusinessRuleParser.LT, 0); }
-		public TerminalNode GTE() { return getToken(BusinessRuleParser.GTE, 0); }
 		public TerminalNode GT() { return getToken(BusinessRuleParser.GT, 0); }
-		public TerminalNode NE() { return getToken(BusinessRuleParser.NE, 0); }
 		public TerminalNode LTE() { return getToken(BusinessRuleParser.LTE, 0); }
+		public TerminalNode GTE() { return getToken(BusinessRuleParser.GTE, 0); }
+		public TerminalNode NE() { return getToken(BusinessRuleParser.NE, 0); }
 		public CompopContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -509,7 +578,11 @@ public class BusinessRuleParser extends Parser {
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQUAL) | (1L << LT) | (1L << GT) | (1L << LTE) | (1L << GTE) | (1L << NE))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
-			consume();
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -524,9 +597,9 @@ public class BusinessRuleParser extends Parser {
 	}
 
 	public static class FunctionContext extends ParserRuleContext {
-		public TerminalNode RIGHTPAREN() { return getToken(BusinessRuleParser.RIGHTPAREN, 0); }
-		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
 		public TerminalNode VARIABLE() { return getToken(BusinessRuleParser.VARIABLE, 0); }
+		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
+		public TerminalNode RIGHTPAREN() { return getToken(BusinessRuleParser.RIGHTPAREN, 0); }
 		public ArgsContext args() {
 			return getRuleContext(ArgsContext.class,0);
 		}
@@ -556,17 +629,22 @@ public class BusinessRuleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(51); match(VARIABLE);
-			setState(52); match(LEFTPAREN);
+			setState(51);
+			match(VARIABLE);
+			setState(52);
+			match(LEFTPAREN);
 			setState(54);
+			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==STRING) {
 				{
-				setState(53); args();
+				setState(53);
+				args();
 				}
 			}
 
-			setState(56); match(RIGHTPAREN);
+			setState(56);
+			match(RIGHTPAREN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -581,10 +659,10 @@ public class BusinessRuleParser extends Parser {
 	}
 
 	public static class ArgsContext extends ParserRuleContext {
+		public List<TerminalNode> STRING() { return getTokens(BusinessRuleParser.STRING); }
 		public TerminalNode STRING(int i) {
 			return getToken(BusinessRuleParser.STRING, i);
 		}
-		public List<TerminalNode> STRING() { return getTokens(BusinessRuleParser.STRING); }
 		public ArgsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -611,15 +689,18 @@ public class BusinessRuleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58); match(STRING);
+			setState(58);
+			match(STRING);
 			setState(63);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(59); match(T__0);
-				setState(60); match(STRING);
+				setState(59);
+				match(T__0);
+				setState(60);
+				match(STRING);
 				}
 				}
 				setState(65);
@@ -641,26 +722,28 @@ public class BusinessRuleParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 1: return expr_sempred((ExprContext)_localctx, predIndex);
+		case 1:
+			return expr_sempred((ExprContext)_localctx, predIndex);
 		}
 		return true;
 	}
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return precpred(_ctx, 9);
+		case 0:
+			return precpred(_ctx, 9);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\24E\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24E\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\'\n\3"+
 		"\3\3\3\3\3\3\3\3\7\3-\n\3\f\3\16\3\60\13\3\3\4\3\4\3\5\3\5\3\6\3\6\3\6"+
 		"\5\69\n\6\3\6\3\6\3\7\3\7\3\7\7\7@\n\7\f\7\16\7C\13\7\3\7\2\3\4\b\2\4"+
-		"\6\b\n\f\2\4\3\2\20\21\3\2\n\17H\2\16\3\2\2\2\4&\3\2\2\2\6\61\3\2\2\2"+
-		"\b\63\3\2\2\2\n\65\3\2\2\2\f<\3\2\2\2\16\17\5\4\3\2\17\20\7\2\2\3\20\3"+
-		"\3\2\2\2\21\22\b\3\1\2\22\23\7\22\2\2\23\24\5\b\5\2\24\25\7\22\2\2\25"+
+		"\6\b\n\f\2\4\3\2\20\21\3\2\n\17\2H\2\16\3\2\2\2\4&\3\2\2\2\6\61\3\2\2"+
+		"\2\b\63\3\2\2\2\n\65\3\2\2\2\f<\3\2\2\2\16\17\5\4\3\2\17\20\7\2\2\3\20"+
+		"\3\3\2\2\2\21\22\b\3\1\2\22\23\7\22\2\2\23\24\5\b\5\2\24\25\7\22\2\2\25"+
 		"\'\3\2\2\2\26\27\7\22\2\2\27\30\5\b\5\2\30\31\7\6\2\2\31\'\3\2\2\2\32"+
 		"\33\7\22\2\2\33\34\5\b\5\2\34\35\7\23\2\2\35\'\3\2\2\2\36\'\5\n\6\2\37"+
 		"\'\7\4\2\2 \'\7\5\2\2!\'\7\22\2\2\"#\7\b\2\2#$\5\4\3\2$%\7\t\2\2%\'\3"+

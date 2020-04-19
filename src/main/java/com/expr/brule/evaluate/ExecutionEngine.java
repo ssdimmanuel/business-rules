@@ -24,6 +24,7 @@ import com.expr.brule.core.BusinessRuleLexer;
 import com.expr.brule.core.BusinessRuleParser;
 import com.expr.brule.core.BusinessRuleParser.ArgsContext;
 import com.expr.brule.core.BusinessRuleParser.BinopContext;
+import com.expr.brule.core.BusinessRuleParser.BooleanVariableContext;
 import com.expr.brule.core.BusinessRuleParser.CompopContext;
 import com.expr.brule.core.BusinessRuleParser.EnclosedExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.FunctionContext;
@@ -135,6 +136,7 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	@Override
 	public Object visitParse(ParseContext ctx) {
 		System.out.println("visit parse: " + ctx.getText());
+		System.out.println(""+ctx.expr().getText());
 		boolean res = false;
 		res = (boolean) super.visit(ctx.expr());
 		return res;
@@ -316,6 +318,19 @@ public class ExecutionEngine extends BusinessRuleBaseVisitor<Object> {
 	}
 	
 	
+
+	@Override
+	public Object visitBooleanVariable(BooleanVariableContext ctx) {
+		System.out.println("inside boolean");
+		String var = ctx.VARIABLE().getText();
+		Object passed = values.get(var);
+		if(passed instanceof Boolean) {
+			
+		}else {
+			throw new RuntimeException("Pass boolean for variable : "+var);
+		}
+		return passed;
+	}
 
 	@Override
 	public Object visitVariableExpression(VariableExpressionContext ctx) {

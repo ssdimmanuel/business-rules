@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<antlr.version>4.7.1</antlr.version>
+		<antlr.version>4.7.2</antlr.version>
 		<xmlunit.version>2.6.2</xmlunit.version>
 	</properties>
 

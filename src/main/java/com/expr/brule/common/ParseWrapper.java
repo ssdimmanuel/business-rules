@@ -33,6 +33,7 @@ public class ParseWrapper extends BusinessRuleBaseListener{
 	 * parser instance
 	 */
 	protected BusinessRuleParser parser;
+	protected CommonTokenStream tokens;
 	
 	private String rule;
 	public ParseWrapper(String rule) {
@@ -45,7 +46,7 @@ public class ParseWrapper extends BusinessRuleBaseListener{
 		//lexer.removeErrorListeners();
 		//lexer.addErrorListener(ThrowingErrorListener.INSTANCE);
 		
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
+		tokens = new CommonTokenStream(lexer);
 		parser = new BusinessRuleParser(tokens);
 		//parser.removeErrorListeners();
 		//parser.addErrorListener(ThrowingErrorListener.INSTANCE);
@@ -57,6 +58,14 @@ public class ParseWrapper extends BusinessRuleBaseListener{
 	
 	public String getLatestRule() {
 		return rw.getText();
+	}
+
+	public BusinessRuleParser getParser() {
+		return parser;
+	}
+
+	public CommonTokenStream getTokens() {
+		return tokens;
 	}
 
 }

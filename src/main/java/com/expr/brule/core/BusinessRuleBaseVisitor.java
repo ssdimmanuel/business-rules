@@ -1,8 +1,7 @@
-// Generated from BusinessRule.g4 by ANTLR 4.4
+// Generated from BusinessRule.g4 by ANTLR 4.7.2
 
 package com.expr.brule.core;
 
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -20,96 +19,96 @@ public class BusinessRuleBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumberExpression(@NotNull BusinessRuleParser.NumberExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParse(BusinessRuleParser.ParseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEnclosedExpression(@NotNull BusinessRuleParser.EnclosedExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitStringExpression(BusinessRuleParser.StringExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBooleanFalse(@NotNull BusinessRuleParser.BooleanFalseContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNumberExpression(BusinessRuleParser.NumberExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParse(@NotNull BusinessRuleParser.ParseContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBooleanTrue(BusinessRuleParser.BooleanTrueContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLogicalExpression(@NotNull BusinessRuleParser.LogicalExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitEnclosedExpression(BusinessRuleParser.EnclosedExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVariableExpression(@NotNull BusinessRuleParser.VariableExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBooleanFalse(BusinessRuleParser.BooleanFalseContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionExpression(@NotNull BusinessRuleParser.FunctionExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBooleanVariable(BusinessRuleParser.BooleanVariableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCompop(@NotNull BusinessRuleParser.CompopContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLogicalExpression(BusinessRuleParser.LogicalExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArgs(@NotNull BusinessRuleParser.ArgsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVariableExpression(BusinessRuleParser.VariableExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStringExpression(@NotNull BusinessRuleParser.StringExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionExpression(BusinessRuleParser.FunctionExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBooleanTrue(@NotNull BusinessRuleParser.BooleanTrueContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBinop(BusinessRuleParser.BinopContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunction(@NotNull BusinessRuleParser.FunctionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCompop(BusinessRuleParser.CompopContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBooleanVariable(@NotNull BusinessRuleParser.BooleanVariableContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunction(BusinessRuleParser.FunctionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitBinop(@NotNull BusinessRuleParser.BinopContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArgs(BusinessRuleParser.ArgsContext ctx) { return visitChildren(ctx); }
 }
