@@ -40,7 +40,7 @@ import org.antlr.v4.runtime.misc.IntervalSet;
  */
 public class CodeCompletionCore {
     
-    public final static Logger logger = Logger.getLogger(CodeCompletionCore.class.getName());
+    public final static Logger log = Logger.getLogger(CodeCompletionCore.class.getName());
 
     /**
      * JDO returning information about matching tokens and rules
@@ -199,7 +199,7 @@ public class CodeCompletionCore {
             candidates.rulePositions.put(ruleId, ruleStartStop);
         }
 
-        if (this.showResult && logger.isLoggable(Level.FINE)) {
+        if (this.showResult && log.isLoggable(Level.FINE)) {
             StringBuilder logMessage = new StringBuilder();
             
             logMessage.append("States processed: ").append(this.statesProcessed).append("\n");
@@ -223,7 +223,7 @@ public class CodeCompletionCore {
                 }
                 logMessage.append("\n");
             }
-            logger.log(Level.FINE, logMessage.toString());
+            log.log(Level.FINE, logMessage.toString());
         }
 
         return this.candidates;
@@ -266,8 +266,8 @@ public class CodeCompletionCore {
 
                 if (addNew) {
                     this.candidates.rules.put(ruleStack.get(i), path);
-                    if (showDebugOutput && logger.isLoggable(Level.FINE)) {
-                        logger.fine("=====> collected: " + this.ruleNames[i]);
+                    if (showDebugOutput && log.isLoggable(Level.FINE)) {
+                        log.fine("=====> collected: " + this.ruleNames[i]);
                     }
                 }
                 return true;
@@ -396,7 +396,7 @@ public class CodeCompletionCore {
         } else {
             if (positionMap.containsKey(tokenIndex)) {
                 if (showDebugOutput) {
-                    logger.fine("=====> shortcut");
+                    log.fine("=====> shortcut");
                 }
                 return positionMap.get(tokenIndex);
             }
@@ -449,8 +449,8 @@ public class CodeCompletionCore {
                     if (!this.translateToRuleIndex(fullPath)) {
                         for (int symbol : set.intervals.toList()) {
                             if (!this.ignoredTokens.contains(symbol)) {
-                                if (showDebugOutput && logger.isLoggable(Level.FINE)) {
-                                    logger.fine("=====> collected: " + this.vocabulary.getDisplayName(symbol));
+                                if (showDebugOutput && log.isLoggable(Level.FINE)) {
+                                    log.fine("=====> collected: " + this.vocabulary.getDisplayName(symbol));
                                 }
                                 if (!this.candidates.tokens.containsKey(symbol))
                                     this.candidates.tokens.put(symbol, set.following); // Following is empty if there is more than one entry in the set.
@@ -461,7 +461,7 @@ public class CodeCompletionCore {
                                     }
                                 }
                             } else {
-                                logger.fine("====> collection: Ignoring token: " + symbol);
+                                log.fine("====> collection: Ignoring token: " + symbol);
                             }
                         }
                     }
@@ -496,7 +496,7 @@ public class CodeCompletionCore {
             currentSymbol = this.tokens.get(currentEntry.tokenIndex).getType();
 
             boolean atCaret = currentEntry.tokenIndex >= this.tokens.size() - 1;
-            if (logger.isLoggable(Level.FINE)) {
+            if (log.isLoggable(Level.FINE)) {
                 printDescription(indentation, currentEntry.state, this.generateBaseDescription(currentEntry.state), currentEntry.tokenIndex);
                 if (this.showRuleStack) {
                     printRuleState(callStack);
@@ -569,8 +569,8 @@ public class CodeCompletionCore {
                                     boolean addFollowing = list.size() == 1;
                                     for (Integer symbol: list) {
                                         if (!this.ignoredTokens.contains(symbol)) {
-                                            if (showDebugOutput && logger.isLoggable(Level.FINE)) {
-                                                logger.fine("=====> collected: " + this.vocabulary.getDisplayName(symbol));
+                                            if (showDebugOutput && log.isLoggable(Level.FINE)) {
+                                                log.fine("=====> collected: " + this.vocabulary.getDisplayName(symbol));
                                             }
                                             if (addFollowing) {
                                                 this.candidates.tokens.put(symbol, this.getFollowingTokens(transition));
@@ -578,14 +578,14 @@ public class CodeCompletionCore {
                                                 this.candidates.tokens.put(symbol, new LinkedList<>());
                                             }
                                         } else {
-                                            logger.fine("====> collected: Ignoring token: " + symbol);
+                                            log.fine("====> collected: Ignoring token: " + symbol);
                                         }
                                     }
                                 }
                             } else {
                                 if (set.contains(currentSymbol)) {
-                                    if (showDebugOutput && logger.isLoggable(Level.FINE)) {
-                                        logger.fine("=====> consumed: " + this.vocabulary.getDisplayName(currentSymbol));
+                                    if (showDebugOutput && log.isLoggable(Level.FINE)) {
+                                        log.fine("=====> consumed: " + this.vocabulary.getDisplayName(currentSymbol));
                                     }
                                     statePipeline.addLast(new PipelineEntry(transition.target, currentEntry.tokenIndex + 1));
                                 }
@@ -630,7 +630,7 @@ public class CodeCompletionCore {
         StringBuilder output = new StringBuilder(currentIndent);
 
         StringBuilder transitionDescription = new StringBuilder();
-        if (this.debugOutputWithTransitions && logger.isLoggable(Level.FINER)) {
+        if (this.debugOutputWithTransitions && log.isLoggable(Level.FINER)) {
             for (Transition transition: state.getTransitions()) {
                 StringBuilder labels = new StringBuilder();
                 List<Integer> symbols = (transition.label() != null) ? transition.label().toList() : new LinkedList<>();
@@ -666,22 +666,22 @@ public class CodeCompletionCore {
             } else {
                 output.append("<").append(this.tokenStartIndex + tokenIndex).append("> ");
             }
-            logger.finer(output + "Current state: " + baseDescription + transitionDescription);
+            log.finer(output + "Current state: " + baseDescription + transitionDescription);
         }
     }
 
     private void printRuleState(LinkedList<Integer> stack) {
         if (stack.isEmpty()) {
-            logger.fine("<empty stack>");
+            log.fine("<empty stack>");
             return;
         }
 
-        if (logger.isLoggable(Level.FINER)) {
+        if (log.isLoggable(Level.FINER)) {
             StringBuilder sb = new StringBuilder();
             for (Integer rule : stack) {
                 sb.append("  ").append(this.ruleNames[rule]).append("\n");
             }
-            logger.log(Level.FINER, sb.toString());
+            log.log(Level.FINER, sb.toString());
         }
     }
 

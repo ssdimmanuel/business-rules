@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.tree.pattern.ParseTreeMatch;
 import org.antlr.v4.runtime.tree.pattern.ParseTreePattern;
 
 import com.expr.brule.common.ParseWrapper;
-import com.expr.brule.core.BusinessRuleParser.ExprContext;
 import com.expr.brule.core.BusinessRuleParser.NumberExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.StringExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
@@ -45,6 +44,4 @@ public class RulePatternMatcher extends ParseWrapper {
 		}
 	}
 	
-	
-
 }

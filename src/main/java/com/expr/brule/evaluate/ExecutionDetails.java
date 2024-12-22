@@ -2,11 +2,16 @@ package com.expr.brule.evaluate;
 
 import com.expr.brule.editing.RuleExpression;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Captures the outcome of every expression in a business rule
  * @author ssdImmanuel
  *
  */
+@Setter
+@Getter
 public class ExecutionDetails {
 	
 	private RuleExpression expression;
@@ -15,19 +20,7 @@ public class ExecutionDetails {
 	
 	public ExecutionDetails() {
 	}
-	public RuleExpression getExpression() {
-		return expression;
-	}
-	public void setExpression(RuleExpression expression) {
-		this.expression = expression;
-	}
-	public boolean isOutcome() {
-		return outcome;
-	}
-	public void setOutcome(boolean outcome) {
-		this.outcome = outcome;
-	}
-	
+
 	public String toString() {
 		return ""+this.expression.toString()+">> Outcome: "+this.outcome;
 	}

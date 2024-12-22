@@ -8,12 +8,12 @@ public class PatternTest {
 
 	public static void main(String[] args) throws IOException {
 		String rule = "( ( ( AMOUNT > 200000.00) AND ( IND1 = Y) ) or ( ind1 = Y ) )";
-		String rule1= "AMOUNT = 1010.00";
-		rule1="<VARIABLE> = <VARIABLE>";
+		String pattern= "AMOUNT = 1010.00";
+		pattern="<VARIABLE> <GT> <VARIABLE>";
 		
-		rule1="<LEFTPAREN>ind1 = <VARIABLE><RIGHTPAREN>";
+//		pattern="<LEFTPAREN> <VARIABLE> = <VARIABLE><RIGHTPAREN>";
 		
-		RulePatternMatcher rmat = new RulePatternMatcher(rule, rule1);
+		RulePatternMatcher rmat = new RulePatternMatcher(rule, pattern);
 		rmat.parseRule();
 		
 	}

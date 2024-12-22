@@ -5,12 +5,17 @@ package com.expr.brule.evaluate;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Execute a set of rules serially
  * 
  * @author ssdImmanuel
  *
  */
+@Getter
+@Setter
 public class RuleSetExecutor {
 
 	/**
@@ -43,21 +48,5 @@ public class RuleSetExecutor {
 		
 		setDiff(this.execend - this.execstart);
 	}
-
-	public List<RuleExecutionContext> getRuleSet() {
-		return ruleSet;
-	}
-
-	public void setRuleSet(List<RuleExecutionContext> ruleSet) {
-		this.ruleSet = ruleSet;
-	}
-
-	public long getDiff() {
-		return diff;
-	}
-
-	public void setDiff(long diff) {
-		this.diff = diff;
-	}
-
+	
 }

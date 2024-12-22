@@ -4,6 +4,7 @@ import java.io.StringReader;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -14,10 +15,12 @@ import com.expr.brule.stats.RuleExpCounter;
 
 public class RuleTest {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 
 		String rule = "( ( ( AMOUNT > 200000.00) AND ( IND1 = Y) ) or ( ind1 = Y ) )";
-		CharStream stream = new ANTLRInputStream(new StringReader(rule));
+//		CharStream stream = new ANTLRInputStream(new StringReader(rule));
+		CharStream stream = CharStreams.fromString(rule);
 		BusinessRuleLexer lexer = new BusinessRuleLexer(stream);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		BusinessRuleParser parser = new BusinessRuleParser(tokens);

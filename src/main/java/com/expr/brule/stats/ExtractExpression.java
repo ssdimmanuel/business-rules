@@ -8,6 +8,11 @@ import com.expr.brule.core.BusinessRuleParser.StringExpressionContext;
 import com.expr.brule.core.BusinessRuleParser.VariableExpressionContext;
 import com.expr.brule.editing.RuleExpression;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class ExtractExpression extends ParseWrapper {
 	
 	private ArrayList<RuleExpression> expressions;
@@ -17,14 +22,6 @@ public class ExtractExpression extends ParseWrapper {
 	public ExtractExpression(String rule) {
 		super(rule);
 		setExpressions(new ArrayList<RuleExpression>());
-	}
-
-	public ArrayList<RuleExpression> getExpressions() {
-		return expressions;
-	}
-
-	public void setExpressions(ArrayList<RuleExpression> expressions) {
-		this.expressions = expressions;
 	}
 
 	@Override
@@ -55,14 +52,6 @@ public class ExtractExpression extends ParseWrapper {
 		exp.setComparedValue(ctx.rhs.getText());
 		expressions.add(exp);
 		this.expressionCount++;
-	}
-
-	public int getExpressionCount() {
-		return expressionCount;
-	}
-
-	public void setExpressionCount(int expressionCount) {
-		this.expressionCount = expressionCount;
 	}
 
 }

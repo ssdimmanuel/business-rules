@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import com.expr.brule.common.ParseWrapper;
 
+import lombok.Data;
+
+@Data
 public class RuleEditSupport extends ParseWrapper {
 
 	protected HashMap<Object, Object> replaceMap = new HashMap();
@@ -12,11 +15,4 @@ public class RuleEditSupport extends ParseWrapper {
 		super(rule);
 		this.replaceMap = rmap;
 	}
-	public HashMap<Object, Object> getReplaceMap() {
-		return replaceMap;
-	}
-	public void setReplaceMap(HashMap<Object, Object> replaceMap) {
-		this.replaceMap = replaceMap;
-	}
-	
 }
