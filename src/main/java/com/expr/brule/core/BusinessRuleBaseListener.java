@@ -1,4 +1,4 @@
-// Generated from BusinessRule.g4 by ANTLR 4.7.2
+// Generated from C:/Dev Work/business-rule-parser/BusinessRule.g4 by ANTLR 4.13.2
 
 package com.expr.brule.core;
 
@@ -12,6 +12,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
+@SuppressWarnings("CheckReturnValue")
 public class BusinessRuleBaseListener implements BusinessRuleListener {
 	/**
 	 * {@inheritDoc}

@@ -1,4 +1,4 @@
-// Generated from BusinessRule.g4 by ANTLR 4.7.2
+// Generated from C:/Dev Work/business-rule-parser/BusinessRule.g4 by ANTLR 4.13.2
 
 package com.expr.brule.core;
 
@@ -12,6 +12,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
+@SuppressWarnings("CheckReturnValue")
 public class BusinessRuleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements BusinessRuleVisitor<T> {
 	/**
 	 * {@inheritDoc}

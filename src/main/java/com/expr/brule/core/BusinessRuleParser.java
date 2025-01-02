@@ -1,4 +1,4 @@
-// Generated from BusinessRule.g4 by ANTLR 4.7.2
+// Generated from C:/Dev Work/business-rule-parser/BusinessRule.g4 by ANTLR 4.13.2
 
 package com.expr.brule.core;
 
@@ -11,17 +11,17 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class BusinessRuleParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, TRUE=2, FALSE=3, STRING=4, QUOTE=5, LEFTPAREN=6, RIGHTPAREN=7, 
-		EQUAL=8, LT=9, GT=10, LTE=11, GTE=12, NE=13, AND=14, OR=15, VARIABLE=16, 
-		NUMBER=17, SPACE=18;
+		T__0=1, TRUE=2, FALSE=3, STRING=4, RULEDELIM=5, QUOTE=6, LEFTPAREN=7, 
+		RIGHTPAREN=8, EQUAL=9, LT=10, GT=11, LTE=12, GTE=13, NE=14, AND=15, OR=16, 
+		VARIABLE=17, NUMBER=18, SPACE=19;
 	public static final int
 		RULE_parse = 0, RULE_expr = 1, RULE_binop = 2, RULE_compop = 3, RULE_function = 4, 
 		RULE_args = 5;
@@ -34,15 +34,15 @@ public class BusinessRuleParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "','", null, null, null, "'\"'", "'('", "')'"
+			null, "','", null, null, null, "';'", "'\"'", "'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, "TRUE", "FALSE", "STRING", "QUOTE", "LEFTPAREN", "RIGHTPAREN", 
-			"EQUAL", "LT", "GT", "LTE", "GTE", "NE", "AND", "OR", "VARIABLE", "NUMBER", 
-			"SPACE"
+			null, null, "TRUE", "FALSE", "STRING", "RULEDELIM", "QUOTE", "LEFTPAREN", 
+			"RIGHTPAREN", "EQUAL", "LT", "GT", "LTE", "GTE", "NE", "AND", "OR", "VARIABLE", 
+			"NUMBER", "SPACE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -96,6 +96,7 @@ public class BusinessRuleParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ParseContext extends ParserRuleContext {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -143,6 +144,7 @@ public class BusinessRuleParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ExprContext extends ParserRuleContext {
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -154,6 +156,7 @@ public class BusinessRuleParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class StringExpressionContext extends ExprContext {
 		public Token lhs;
 		public Token rhs;
@@ -177,6 +180,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class NumberExpressionContext extends ExprContext {
 		public Token lhs;
 		public Token rhs;
@@ -200,6 +204,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class BooleanTrueContext extends ExprContext {
 		public TerminalNode TRUE() { return getToken(BusinessRuleParser.TRUE, 0); }
 		public BooleanTrueContext(ExprContext ctx) { copyFrom(ctx); }
@@ -217,6 +222,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class EnclosedExpressionContext extends ExprContext {
 		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
 		public ExprContext expr() {
@@ -238,6 +244,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class BooleanFalseContext extends ExprContext {
 		public TerminalNode FALSE() { return getToken(BusinessRuleParser.FALSE, 0); }
 		public BooleanFalseContext(ExprContext ctx) { copyFrom(ctx); }
@@ -255,6 +262,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class BooleanVariableContext extends ExprContext {
 		public TerminalNode VARIABLE() { return getToken(BusinessRuleParser.VARIABLE, 0); }
 		public BooleanVariableContext(ExprContext ctx) { copyFrom(ctx); }
@@ -272,6 +280,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class LogicalExpressionContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -297,6 +306,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class VariableExpressionContext extends ExprContext {
 		public Token lhs;
 		public Token rhs;
@@ -322,6 +332,7 @@ public class BusinessRuleParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionExpressionContext extends ExprContext {
 		public FunctionContext function() {
 			return getRuleContext(FunctionContext.class,0);
@@ -488,6 +499,7 @@ public class BusinessRuleParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class BinopContext extends ParserRuleContext {
 		public TerminalNode AND() { return getToken(BusinessRuleParser.AND, 0); }
 		public TerminalNode OR() { return getToken(BusinessRuleParser.OR, 0); }
@@ -540,6 +552,7 @@ public class BusinessRuleParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class CompopContext extends ParserRuleContext {
 		public TerminalNode EQUAL() { return getToken(BusinessRuleParser.EQUAL, 0); }
 		public TerminalNode LT() { return getToken(BusinessRuleParser.LT, 0); }
@@ -575,7 +588,7 @@ public class BusinessRuleParser extends Parser {
 			{
 			setState(49);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EQUAL) | (1L << LT) | (1L << GT) | (1L << LTE) | (1L << GTE) | (1L << NE))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 32256L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -596,6 +609,7 @@ public class BusinessRuleParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionContext extends ParserRuleContext {
 		public TerminalNode VARIABLE() { return getToken(BusinessRuleParser.VARIABLE, 0); }
 		public TerminalNode LEFTPAREN() { return getToken(BusinessRuleParser.LEFTPAREN, 0); }
@@ -658,6 +672,7 @@ public class BusinessRuleParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ArgsContext extends ParserRuleContext {
 		public List<TerminalNode> STRING() { return getTokens(BusinessRuleParser.STRING); }
 		public TerminalNode STRING(int i) {
@@ -736,24 +751,48 @@ public class BusinessRuleParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24E\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\'\n\3"+
-		"\3\3\3\3\3\3\3\3\7\3-\n\3\f\3\16\3\60\13\3\3\4\3\4\3\5\3\5\3\6\3\6\3\6"+
-		"\5\69\n\6\3\6\3\6\3\7\3\7\3\7\7\7@\n\7\f\7\16\7C\13\7\3\7\2\3\4\b\2\4"+
-		"\6\b\n\f\2\4\3\2\20\21\3\2\n\17\2H\2\16\3\2\2\2\4&\3\2\2\2\6\61\3\2\2"+
-		"\2\b\63\3\2\2\2\n\65\3\2\2\2\f<\3\2\2\2\16\17\5\4\3\2\17\20\7\2\2\3\20"+
-		"\3\3\2\2\2\21\22\b\3\1\2\22\23\7\22\2\2\23\24\5\b\5\2\24\25\7\22\2\2\25"+
-		"\'\3\2\2\2\26\27\7\22\2\2\27\30\5\b\5\2\30\31\7\6\2\2\31\'\3\2\2\2\32"+
-		"\33\7\22\2\2\33\34\5\b\5\2\34\35\7\23\2\2\35\'\3\2\2\2\36\'\5\n\6\2\37"+
-		"\'\7\4\2\2 \'\7\5\2\2!\'\7\22\2\2\"#\7\b\2\2#$\5\4\3\2$%\7\t\2\2%\'\3"+
-		"\2\2\2&\21\3\2\2\2&\26\3\2\2\2&\32\3\2\2\2&\36\3\2\2\2&\37\3\2\2\2& \3"+
-		"\2\2\2&!\3\2\2\2&\"\3\2\2\2\'.\3\2\2\2()\f\13\2\2)*\5\6\4\2*+\5\4\3\f"+
-		"+-\3\2\2\2,(\3\2\2\2-\60\3\2\2\2.,\3\2\2\2./\3\2\2\2/\5\3\2\2\2\60.\3"+
-		"\2\2\2\61\62\t\2\2\2\62\7\3\2\2\2\63\64\t\3\2\2\64\t\3\2\2\2\65\66\7\22"+
-		"\2\2\668\7\b\2\2\679\5\f\7\28\67\3\2\2\289\3\2\2\29:\3\2\2\2:;\7\t\2\2"+
-		";\13\3\2\2\2<A\7\6\2\2=>\7\3\2\2>@\7\6\2\2?=\3\2\2\2@C\3\2\2\2A?\3\2\2"+
-		"\2AB\3\2\2\2B\r\3\2\2\2CA\3\2\2\2\6&.8A";
+		"\u0004\u0001\u0013C\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
+		"\u0005\u0007\u0005\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0003\u0001%\b\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0005\u0001+\b\u0001\n\u0001\f\u0001.\t\u0001\u0001"+
+		"\u0002\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0001"+
+		"\u0004\u0003\u00047\b\u0004\u0001\u0004\u0001\u0004\u0001\u0005\u0001"+
+		"\u0005\u0001\u0005\u0005\u0005>\b\u0005\n\u0005\f\u0005A\t\u0005\u0001"+
+		"\u0005\u0000\u0001\u0002\u0006\u0000\u0002\u0004\u0006\b\n\u0000\u0002"+
+		"\u0001\u0000\u000f\u0010\u0001\u0000\t\u000eF\u0000\f\u0001\u0000\u0000"+
+		"\u0000\u0002$\u0001\u0000\u0000\u0000\u0004/\u0001\u0000\u0000\u0000\u0006"+
+		"1\u0001\u0000\u0000\u0000\b3\u0001\u0000\u0000\u0000\n:\u0001\u0000\u0000"+
+		"\u0000\f\r\u0003\u0002\u0001\u0000\r\u000e\u0005\u0000\u0000\u0001\u000e"+
+		"\u0001\u0001\u0000\u0000\u0000\u000f\u0010\u0006\u0001\uffff\uffff\u0000"+
+		"\u0010\u0011\u0005\u0011\u0000\u0000\u0011\u0012\u0003\u0006\u0003\u0000"+
+		"\u0012\u0013\u0005\u0011\u0000\u0000\u0013%\u0001\u0000\u0000\u0000\u0014"+
+		"\u0015\u0005\u0011\u0000\u0000\u0015\u0016\u0003\u0006\u0003\u0000\u0016"+
+		"\u0017\u0005\u0004\u0000\u0000\u0017%\u0001\u0000\u0000\u0000\u0018\u0019"+
+		"\u0005\u0011\u0000\u0000\u0019\u001a\u0003\u0006\u0003\u0000\u001a\u001b"+
+		"\u0005\u0012\u0000\u0000\u001b%\u0001\u0000\u0000\u0000\u001c%\u0003\b"+
+		"\u0004\u0000\u001d%\u0005\u0002\u0000\u0000\u001e%\u0005\u0003\u0000\u0000"+
+		"\u001f%\u0005\u0011\u0000\u0000 !\u0005\u0007\u0000\u0000!\"\u0003\u0002"+
+		"\u0001\u0000\"#\u0005\b\u0000\u0000#%\u0001\u0000\u0000\u0000$\u000f\u0001"+
+		"\u0000\u0000\u0000$\u0014\u0001\u0000\u0000\u0000$\u0018\u0001\u0000\u0000"+
+		"\u0000$\u001c\u0001\u0000\u0000\u0000$\u001d\u0001\u0000\u0000\u0000$"+
+		"\u001e\u0001\u0000\u0000\u0000$\u001f\u0001\u0000\u0000\u0000$ \u0001"+
+		"\u0000\u0000\u0000%,\u0001\u0000\u0000\u0000&\'\n\t\u0000\u0000\'(\u0003"+
+		"\u0004\u0002\u0000()\u0003\u0002\u0001\n)+\u0001\u0000\u0000\u0000*&\u0001"+
+		"\u0000\u0000\u0000+.\u0001\u0000\u0000\u0000,*\u0001\u0000\u0000\u0000"+
+		",-\u0001\u0000\u0000\u0000-\u0003\u0001\u0000\u0000\u0000.,\u0001\u0000"+
+		"\u0000\u0000/0\u0007\u0000\u0000\u00000\u0005\u0001\u0000\u0000\u0000"+
+		"12\u0007\u0001\u0000\u00002\u0007\u0001\u0000\u0000\u000034\u0005\u0011"+
+		"\u0000\u000046\u0005\u0007\u0000\u000057\u0003\n\u0005\u000065\u0001\u0000"+
+		"\u0000\u000067\u0001\u0000\u0000\u000078\u0001\u0000\u0000\u000089\u0005"+
+		"\b\u0000\u00009\t\u0001\u0000\u0000\u0000:?\u0005\u0004\u0000\u0000;<"+
+		"\u0005\u0001\u0000\u0000<>\u0005\u0004\u0000\u0000=;\u0001\u0000\u0000"+
+		"\u0000>A\u0001\u0000\u0000\u0000?=\u0001\u0000\u0000\u0000?@\u0001\u0000"+
+		"\u0000\u0000@\u000b\u0001\u0000\u0000\u0000A?\u0001\u0000\u0000\u0000"+
+		"\u0004$,6?";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
