@@ -5,7 +5,7 @@
 
 	<groupId>com.passion</groupId>
 	<artifactId>business-rules</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${VERSION}</version>
 	<packaging>jar</packaging>
 
 	<name>business-rules</name>
@@ -14,6 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<antlr.version>4.13.2</antlr.version>
 		<xmlunit.version>2.6.2</xmlunit.version>
+		<VERSION>0.0.1-SNAPSHOT</VERSION>
 	</properties>
 
 	<dependencies>
