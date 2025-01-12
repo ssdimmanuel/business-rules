@@ -141,7 +141,7 @@ public class CodeCompletionCore {
      * Optionally you can pass in a parser rule context which limits the ATN walk to only that or called rules. This can significantly
      * speed up the retrieval process but might miss some candidates (if they are outside of the given context).
      */
-    public CandidatesCollection collectCandidates(int caretTokenIndex, ParserRuleContext context) {
+    public CandidatesCollection collectCandidates(int caretTokenIndex, ParserRuleContext context, boolean show) {
         this.shortcutMap.clear();
         this.candidates.rules.clear();
         this.candidates.tokens.clear();
@@ -199,7 +199,7 @@ public class CodeCompletionCore {
             candidates.rulePositions.put(ruleId, ruleStartStop);
         }
 
-        if (this.showResult && log.isLoggable(Level.FINE)) {
+        if (show) {
             StringBuilder logMessage = new StringBuilder();
             
             logMessage.append("States processed: ").append(this.statesProcessed).append("\n");

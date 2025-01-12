@@ -8,6 +8,9 @@ import java.util.List;
 import com.expr.brule.evaluate.RuleExecutionContext;
 import com.expr.brule.evaluate.RuleSetExecutor;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class RuleExecTest2 {
 
 	public static void main(String[] args) throws Exception {
@@ -48,6 +51,8 @@ public class RuleExecTest2 {
 		exec.execute();
 		
 		System.out.println("Time diff: "+exec.getDiff()+" msec");
+		
+		log.info("Time diff: "+exec.getDiff()+" msec");
 		
 	}
 
